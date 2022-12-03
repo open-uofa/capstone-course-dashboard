@@ -38,7 +38,7 @@ Within a course, the dashboard will display its statistics and may be
 reconfigured as required.
 
 Further documentation can be found
-[here](https://ualberta-cmput401.github.io/capstone-dashboard/).
+[here](https://open-uofa.github.io/capstone-course-dashboard/).
 
 ## Deployment Instructions
 
