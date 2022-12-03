@@ -1,0 +1,42 @@
+# Run frontend tests on self-hosted runner.
+
+name: Frontend
+
+on:
+  push:
+    paths: ["front-end/**"]
+    branches: [main, dev]
+  pull_request:
+    paths: ["front-end/**"]
+    branches: [main, dev]
+  # Allows you to run this workflow manually from the Actions tab.
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: front-end/capstone-dashboard
+
+jobs:
+  prettier:
+    name: Check formatting using prettier
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Setup yarn
+        run: npm install -g yarn
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-v2-${{ hashFiles('front-end/capstone-dashboard/yarn.lock') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn install
+      - name: Run prettier
+        run: npx prettier --check .

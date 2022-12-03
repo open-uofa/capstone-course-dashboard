@@ -1,0 +1,14 @@
+[MESSAGES CONTROL]
+disable=too-few-public-methods,
+    missing-class-docstring,
+    no-name-in-module,
+    too-many-instance-attributes,
+    redefined-outer-name,
+    line-too-long,
+    fixme,
+    unused-argument
+
+[SIMILARITIES]
+
+min-similarity-lines=10
+

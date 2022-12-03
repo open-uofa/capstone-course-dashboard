@@ -1,0 +1,23 @@
+.DS_Store
+__pycache__/
+venv/
+docker-compose.yml
+docker-compose.yaml
+
+# mkdocs #
+mkdocsvenv
+site
+
+# frontend #
+.svelte-kit
+node_modules
+env
+
+# backend #
+.env
+*.pem
+id_*
+
+# IDE
+*.idea/
+.vscode/

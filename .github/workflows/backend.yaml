@@ -1,0 +1,134 @@
+# Run backend tests on self-hosted runner.
+
+name: Backend
+
+on:
+  push:
+    paths: ["backend/**"]
+    branches: [main, dev]
+  pull_request:
+    paths: ["backend/**"]
+    branches: [main, dev]
+  # Allows you to run this workflow manually from the Actions tab.
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: backend/app
+
+jobs:
+  isort:
+    name: Check import order using isort
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-v4-${{ hashFiles('backend/app/requirements.txt') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: pip install pip --upgrade && pip install -r requirements.txt
+      - name: Run isort
+        run: isort --check --profile black server/ tests/
+
+  black:
+    name: Check formatting using black (formatter)
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-v4-${{ hashFiles('backend/app/requirements.txt') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: pip install pip --upgrade && pip install -r requirements.txt
+      - name: Run black
+        run: black --check server/ tests/
+
+  pylint:
+    name: Check Python style using pylint
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-v4-${{ hashFiles('backend/app/requirements.txt') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: pip install pip --upgrade && pip install -r requirements.txt
+      - name: Run pylint
+        run: |
+          pylint server/
+          pylint --rcfile tests/.pylintrc tests/
+
+  unit-tests:
+    name: Run unit tests
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-v4-${{ hashFiles('backend/app/requirements.txt') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: pip install pip --upgrade && pip install -r requirements.txt
+      - name: Run tests
+        run: pytest tests/unit
+
+  integration-tests:
+    name: Run integration tests
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-v4-${{ hashFiles('backend/app/requirements.txt') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: pip install pip --upgrade && pip install -r requirements.txt
+      - name: Set up environment
+        run: |
+          cp ~/env/pk.pem tests/integration
+          cp ~/env/.env server
+      - name: Run tests
+        run: pytest tests/integration

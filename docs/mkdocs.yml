@@ -1,0 +1,16 @@
+site_name: Capstone Course Dashboard
+#site_url: https://UAlberta.github.io/capstone-dashboard
+nav: 
+  - 'index.md'
+  - 'softwaredesign.md'
+
+theme:
+  name: 'material'
+  palette:
+    primary: 'orange'
+    accent: 'deep orange'
+
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true 

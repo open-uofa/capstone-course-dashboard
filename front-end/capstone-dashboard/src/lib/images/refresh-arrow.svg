@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="255.99998"
+   height="255.99998"
+   viewBox="0 0 67.733328 67.733328"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title1072">Refresh Arrow</title>
+  <defs
+     id="defs2">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1217">
+      <path
+         style="display:none;fill:#999999;stroke:none;stroke-width:9.31661"
+         d="m 33.074244,36.980357 c 28.260275,1.270547 28.260275,1.270547 28.260275,1.270547 L 62.64195,10.787933"
+         id="path1219" />
+      <path
+         id="lpe_path-effect1221"
+         style="display:block;fill:#999999;stroke:none;stroke-width:9.31661"
+         class="powerclip"
+         d="M 1.4451165,1.4451165 H 66.288213 V 66.288213 H 1.4451165 Z M 33.074244,36.980357 c 28.260275,1.270547 28.260275,1.270547 28.260275,1.270547 L 62.64195,10.787933" />
+    </clipPath>
+  </defs>
+  <g
+     id="layer1">
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:12.4402"
+       id="path163"
+       clip-path="url(#clipPath1217)"
+       d="M 55.068113,33.866665 A 21.201448,21.201448 0 0 1 33.866665,55.068113 21.201448,21.201448 0 0 1 12.665216,33.866665 21.201448,21.201448 0 0 1 33.866665,12.665216 21.201448,21.201448 0 0 1 55.068113,33.866665 Z" />
+    <path
+       style="fill:#ffffff;stroke:none;stroke-width:9.60437"
+       d="m 29.935523,29.196229 c 28.719194,1.328666 28.719194,1.328666 28.719194,1.328666 L 59.983381,1.8057014"
+       id="path1010" />
+  </g>
+  <metadata
+     id="metadata1070">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:title>Refresh Arrow</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Michael Huang</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:date>November 9, 2022</dc:date>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>arrow</rdf:li>
+            <rdf:li>refresh</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

@@ -1,0 +1,34 @@
+version: '3'
+services:
+  capstone-backend:
+    build: ./backend/app/
+    container_name: capstone-dashboard-backend
+    command: '--host 0.0.0.0 --port 8000'
+
+    # Host mode is needed if your Mongo database exists externally.
+    # If hosted locally with Docker, set MONGODB_ADDRESS=YOUR_MONGODB_SERVICE
+    # (see https://docs.docker.com/compose/networking/).
+    #network_mode: host
+
+    # Set the environment variables based on your deployment.
+    environment:
+      - MONGODB_ADDRESS=<YOUR_MONGODB_URL>
+      - DB_NAME=<YOUR_DATABASE_NAME>
+      - GITHUB_APP_ID=<YOUR_GITHUB_APP_ID>
+      - GITHUB_PRIVATE_KEY_PATH=/config/id_rsa
+      # See 'backend/README.md'
+      - API_SECRET_KEY=<YOUR_GENERATED_SECRET_KEY>
+    volumes:
+      # Mount your GitHub private key
+      - ./id_rsa:/config/id_rsa
+
+  capstone-frontend:
+    build:
+      context: ./front-end/capstone-dashboard/
+      args:
+        - VITE_PUBLIC_BASE_PATH=<URL_TO_YOUR_HOSTED_BACKEND>
+        - VITE_PUBLIC_GITHUB_OWNER=<YOUR_GITHUB_ACCOUNT_OR_ORGANIZATION_NAME>
+        - VITE_PRIVATE_GOOGLE_CLIENT_ID=<YOUR_GOOGLE_CLIENT_ID>
+    container_name: capstone-dashboard-frontend
+    ports:
+      - 5173:80
