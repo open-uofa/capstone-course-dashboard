@@ -4,7 +4,7 @@
 	import { refresh } from '$lib/refresh';
 
 	export let sprint_list_data = new Array();
-	
+
 	const dispatch = createEventDispatcher();
 	var sprint_list = new Array();
 

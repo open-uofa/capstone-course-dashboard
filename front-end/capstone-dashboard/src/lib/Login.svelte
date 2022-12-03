@@ -14,7 +14,7 @@
 	function initClient() {
 		client = google.accounts.oauth2.initTokenClient({
 			client_id: variables.googleClientId,
-            scope: gAuthScopes,
+			scope: gAuthScopes,
 			callback: (tokenResponse) => {
 				// Callback runs after token is fetched
 				access_token = tokenResponse.access_token;

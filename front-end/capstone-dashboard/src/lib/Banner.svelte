@@ -2,15 +2,15 @@
 	import Logo from '$lib/UAlbertaLogo.svelte';
 	import DropdownArrow from '$lib/images/down-arrow.svg';
 	import { goto } from '$app/navigation';
-    import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { variables } from '$lib/variables';
 
 	export let has_icon = false;
 	export let header;
 	export let username;
 
-    let usernameDisplay;
-    let usernameDialog;
+	let usernameDisplay;
+	let usernameDialog;
 
 	onMount(() => {
 		setInterval(refresh, 840000);
@@ -66,15 +66,15 @@
 			});
 	}
 
-    async function showLogout() {
-        if (!('open' in usernameDialog.attributes)) {
-            usernameDisplay.style.backgroundColor = 'hsl(139, 41%, 30%)';
-            return usernameDialog.show();
-        }
+	async function showLogout() {
+		if (!('open' in usernameDialog.attributes)) {
+			usernameDisplay.style.backgroundColor = 'hsl(139, 41%, 30%)';
+			return usernameDialog.show();
+		}
 
-        usernameDisplay.style.backgroundColor = 'hsl(139, 41%, 40%)';
-        usernameDialog.close();
-    }
+		usernameDisplay.style.backgroundColor = 'hsl(139, 41%, 40%)';
+		usernameDialog.close();
+	}
 </script>
 
 <nav class="banner">
@@ -89,7 +89,12 @@
 	{/if}
 
 	{#if username}
-		<div class="username" bind:this={usernameDisplay} on:click={showLogout} on:keypress={showLogout}>
+		<div
+			class="username"
+			bind:this={usernameDisplay}
+			on:click={showLogout}
+			on:keypress={showLogout}
+		>
 			<p>{username}</p>
 			<img src={DropdownArrow} alt="Dropdown arrow" role="img" />
 			<dialog class="username-dropdown" bind:this={usernameDialog}>
@@ -149,7 +154,7 @@
 		color: white;
 		font-size: 2.5ch;
 		background-color: hsl(139, 41%, 40%);
-        user-select: none;
+		user-select: none;
 	}
 
 	.username:hover {
@@ -167,10 +172,10 @@
 		top: 100%;
 		left: 0%;
 		width: 100%;
-        padding: 0;
-        z-index: -1;
+		padding: 0;
+		z-index: -1;
 
-        animation: slideDown 75ms forwards;
+		animation: slideDown 75ms forwards;
 		background-color: hsl(139 41% 40%);
 	}
 
@@ -181,7 +186,7 @@
 		background: transparent;
 		color: white;
 		text-align: center;
-        user-select: none;
+		user-select: none;
 	}
 
 	.username-dropdown[open] > button:hover {
@@ -189,13 +194,13 @@
 		background-color: hsl(139, 41%, 30%);
 	}
 
-    @keyframes slideDown {
-        from {
-            transform: translateY(-100%);
-        }
+	@keyframes slideDown {
+		from {
+			transform: translateY(-100%);
+		}
 
-        to {
-            transform: translateY(0%);
-        }
-    }
+		to {
+			transform: translateY(0%);
+		}
+	}
 </style>
