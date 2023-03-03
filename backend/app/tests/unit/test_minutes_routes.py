@@ -92,7 +92,7 @@ def test_fetch_and_store_meeting_minutes(mocker, response_mock):
 
     minutes.fetch_and_store_meeting_minutes("course_name", "owner_name", "team_name")
     mock_get.assert_called_once_with(
-        "https://owner_name.github.io/team_name/meeting_minutes/", timeout=60
+        "https://owner_name.github.io/team_name/meeting-minutes/", timeout=60
     )
     mock_check_course_in_db.assert_called_once()
     mock_delete_many.assert_called_once_with({"team": "team_name"})
@@ -129,7 +129,7 @@ def test_fetch_and_store_meeting_minutes_invalid_course(mocker, response_mock):
             "course_name", "owner_name", "team_name"
         )
     mock_get.assert_called_once_with(
-        "https://owner_name.github.io/team_name/meeting_minutes/", timeout=60
+        "https://owner_name.github.io/team_name/meeting-minutes/", timeout=60
     )
     mock_check_course_in_db.assert_called_once()
     assert exc.value.status_code == 404
@@ -146,7 +146,7 @@ def test_fetch_and_store_meeting_minutes_invalid_url(mocker, response_mock):
             "course_name", "owner_name", "team_name"
         )
     mock_get.assert_called_once_with(
-        "https://owner_name.github.io/team_name/meeting_minutes/", timeout=60
+        "https://owner_name.github.io/team_name/meeting-minutes/", timeout=60
     )
     assert exc.value.status_code == 404
 
@@ -163,7 +163,7 @@ def test_fetch_and_store_meeting_minutes_parsing_error(mocker, response_mock):
             "course_name", "owner_name", "team_name"
         )
     mock_get.assert_called_once_with(
-        "https://owner_name.github.io/team_name/meeting_minutes/", timeout=60
+        "https://owner_name.github.io/team_name/meeting-minutes/", timeout=60
     )
     assert exc.value.status_code == 400
     assert exc.value.detail.startswith(
@@ -186,7 +186,7 @@ def test_fetch_and_store_meeting_minutes_date_format_error(mocker, response_mock
             "course_name", "owner_name", "team_name"
         )
     mock_get.assert_called_once_with(
-        "https://owner_name.github.io/team_name/meeting_minutes/", timeout=60
+        "https://owner_name.github.io/team_name/meeting-minutes/", timeout=60
     )
     mock_check_course_in_db.assert_called_once()
     assert exc.value.status_code == 400
