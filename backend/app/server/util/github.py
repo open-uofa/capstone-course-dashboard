@@ -79,7 +79,7 @@ def get_new_commits(owner: str, repo: str, course_name: str):
     # We only fetch commits that are newer than what we currently have in our database.
     # This makes the assumption that commits on the main branch of the repository
     # will not be modified.
-    most_recent_commit = coll.find_one(sort=[("timestamp", -1)])
+    most_recent_commit = coll.find_one({"repo_name": repo},sort=[("timestamp", -1)])
 
     url = f"https://api.github.com/repos/{owner}/{repo}/commits"
     params = {"per_page": 100}

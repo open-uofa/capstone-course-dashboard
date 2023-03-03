@@ -305,7 +305,7 @@
 													>{row.Name}</a
 												></td
 											>
-											<td>{row.Project}</td>
+											<td style="width: 100px; word-wrap: break-word;">{row.Project}</td>
 											<td>{row.Avg_score}</td>
 										</tr>
 									{/each}

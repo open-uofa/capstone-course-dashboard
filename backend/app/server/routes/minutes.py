@@ -78,13 +78,14 @@ def get_meeting_minutes(course: str, team: str, sprint: int):
 )
 def fetch_and_store_meeting_minutes(course: str, owner: str, team: str):
     """Fetch meeting minutes from the MKDocs page and store them into the database."""
-    minutes_url = f"https://{owner}.github.io/{team}/meeting_minutes/"
+    minutes_url = f"https://{owner}.github.io/{team}/meeting-minutes/"
 
     # Fetch the meeting minutes from the MKDocs page.
     minutes_page = requests.get(minutes_url)
     # Parsing is hardcoded for the current format of our MKDocs page.
     # This needs to be enforced for all teams for the meeting minutes to be fetched successfully.
     # URL format: https://{owner}.github.io/{team}/meeting_minutes/
+    # update: 2023-03-03, meeting minutes link is now https://{owner}.github.io/{team}/meeting-minutes/
     # MKDocs format:
     # === "Title for tab, must be some sort of date"
     # Meeting minutes content (can be anything)
